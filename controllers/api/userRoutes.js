@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const user = await User.create(req.body);
 
         req.session.save(() => {
             req.session.user = user;
-            req.status(200).json(user);
+            res.redirect('/dashboard');
         });
     } catch (err) {
         console.error(err);
@@ -36,7 +36,7 @@ router.post('/signin', async (req, res) => {
 
         req.session.save(() => {
             req.session.user = user;
-            res.status(200).json(user);
+            res.redirect('/dashboard');
         });
     } catch (err) {
         console.error(err);
@@ -44,9 +44,9 @@ router.post('/signin', async (req, res) => {
     }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     req.session.destroy();
-    res.status(204);
+    res.redirect('/');
 });
 
 module.exports = router;

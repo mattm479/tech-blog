@@ -1,0 +1,20 @@
+<div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">The Tech Blog</a>
+</div>
+
+<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="/" class="nav-link px-2">Home</a></li>
+    <li><a href="/dashboard" class="nav-link px-2">Dashboard</a></li>
+</ul>
+
+<div class="col-md-3 text-end">
+    {{#if user}}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreatePost">
+            Create Post
+        </button>
+        <a class="btn btn-primary me-2" href="/api/users/logout">Logout</a>
+    {{else}}
+        <a class="btn btn-primary me-2" href="/signin">Signin</a>
+        <a class="btn btn-primary" href="/signup">Signup</a>
+    {{/if}}
+</div>

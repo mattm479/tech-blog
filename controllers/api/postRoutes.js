@@ -36,9 +36,12 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
     try {
-        const post = await Post.create(req.body);
+        const post = await Post.create({
+            ...req.body,
+            user_id: req.session.user.id
+        });
 
-        req.status(200).json(post);
+        res.redirect('/dashboard');
     } catch (err) {
         console.error(err);
         res.status(400).json(err);

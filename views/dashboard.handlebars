@@ -1,0 +1,32 @@
+<div class="container">
+    {{#each posts}}
+        <div class="mb-3">
+            {{> post }}
+        </div>
+    {{/each}}
+</div>
+
+<div class="modal fade" tabindex="-1" aria-labelledby="modalCreatePostLabel" id="modalCreatePost" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h1 class="fw-bold mb-0 fs-2">Create a Post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-5 pt-0">
+                <form id="create-post-form" method="post" action="/api/posts">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-3" id="title" name="title" placeholder="Title">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control rounded-3" id="content" name="content" placeholder="content"></textarea>
+                        <label for="content">Content</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Create Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
