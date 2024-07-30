@@ -9,8 +9,6 @@
         "lint:check": "eslint .",
         "lint:fix": "eslint --fix .",
         "start": "node server.js",
-        "seed": "node seeds/index.js",
-        "test": "jest",
         "watch": "nodemon server.js"
     },
     "repository": {

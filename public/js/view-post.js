@@ -15,7 +15,7 @@ async function handleAddComment(event) {
             }
         });
 
-        document.location.replace('/dashboard');
+        document.location.replace(`/posts/${postId}?action=view`);
     } catch (err) {
         console.error(err);
     }
