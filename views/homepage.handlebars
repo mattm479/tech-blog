@@ -1,7 +1,10 @@
 <div class="container">
-    {{#each posts}}
-        <div class="mb-3">
-            {{> post }}
+    {{#each posts as |post|}}
+        <div class="mb-3 card">
+            <div class="card-body">
+                <h2 class="card-title"><a href="/posts/{{ post.id }}?action=view">{{ post.title }}</a></h2>
+                <footer class="blockquote-footer" style="float: right;">Posted by {{ post.user.username }} on {{ format_date post.updatedAt }}</footer>
+            </div>
         </div>
     {{/each}}
 </div>

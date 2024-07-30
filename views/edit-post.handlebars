@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form id="edit-post-form">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-3" id="title" name="title" value="{{ post.title }}">
+                    <label for="title">Title</label>
+                </div>
+                <blockquote class="blockquote mb-0">
+                    <div class="form-group mb-3">
+                        <label for="content">Content</label>
+                        <textarea class="form-control rounded-3" id="content" name="content">{{ post.content }}</textarea>
+                    </div>
+                    <footer class="blockquote-footer">Posted by {{ post.user.username }} on {{ format_date post.updatedAt }}</footer>
+                </blockquote>
+                <span style="float: right;">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/dashboard" type="button" class="btn btn-primary">Cancel</a>
+                <input type="hidden" id="id" value="{{ post.id }}"></input>
+            </span>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/edit-post.js"></script>

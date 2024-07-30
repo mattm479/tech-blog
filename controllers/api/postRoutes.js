@@ -34,6 +34,24 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/edit/:id', async (req, res) => {
+    try {
+        const post = await Post.findOne({
+            include: [ Comment, User ],
+            where: {
+                id: req.params.id
+            }
+        });
+
+        const postData = post.get({ plain: true });
+
+        res.render('edit-post', { post: postData });
+    } catch (err) {
+        console.error(err);
+        res.status(400).json(err);
+    }
+});
+
 router.post('/', withAuth, async (req, res) => {
     try {
         const post = await Post.create({

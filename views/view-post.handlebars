@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <article class="mb-0">
+                <h2 class="card-title">{{ post.title }}</h2>
+                <footer class="blockquote-footer" style="float: right;">Posted by {{ post.user.username }} on {{ format_date post.updatedAt }}</footer>
+                <p class="card-text mb-5" style="clear: right;">{{ post.content }}</p>
+            </article>
+            {{#if user}}
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <form id="add-comment-form">
+                            <div class="form-group mb-3">
+                                <label for="comment">Comment</label>
+                                <textarea id="comment" name="comment" class="form-control"></textarea>
+                            </div>
+                            <input type="hidden" id="postId" name="postId" value="{{ post.id }}">
+                            <button type="submit" class="btn btn-primary">Add Comment</button>
+                        </form>
+                    </div>
+                </div>
+            {{/if}}
+            <h3 class="mb-3">Comments</h3>
+            {{#each post.comments as |comment|}}
+                <article class="mb-5">
+                    <h2 class="card-title"></h2>
+                    <p>{{ comment.content }}</p>
+                    <footer class="blockquote-footer">{{ comment.user.username }} on {{ format_date comment.createdAt }}</footer>
+                </article>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<script src="/js/view-post.js"></script>
