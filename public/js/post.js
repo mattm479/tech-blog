@@ -1,3 +1,5 @@
+document.getElementById("delete-post-form").addEventListener('submit', handleDeletePost);
+
 async function handleDeletePost(event) {
     event.preventDefault();
 
@@ -6,11 +8,4 @@ async function handleDeletePost(event) {
     await fetch(`/api/posts/${id}`, { method: 'DELETE' });
 
     document.location.replace('/dashboard');
-}
-
-async function handleShowAddComment(event) {
-    event.preventDefault();
-
-    const cardDiv = document.getElementById('comment-div');
-    cardDiv.classList.remove('display-none');
 }
